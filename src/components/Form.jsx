@@ -7,6 +7,9 @@ import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 
 const Form = () => {
   const restartTimer = useSelector((state) => state.timerSlice.restartTimer);
+  const preferredColor = useSelector(
+    (state) => state.settingsSlice.preferredColor
+  );
   const dispatch = useDispatch();
   const {
     register,
@@ -135,7 +138,11 @@ const Form = () => {
         }
         errors={errors}
       />
-      <button type="submit" className="btn btn-apply">
+      <button
+        type="submit"
+        className="btn btn-apply"
+        style={{ backgroundColor: preferredColor === "" ? "" : preferredColor }}
+      >
         Apply
       </button>
     </form>
