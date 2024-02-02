@@ -21,9 +21,11 @@ export const timerSlice = createSlice({
     reduceTimerPerSecond(state, action) {
       if (state.timerDuration > 0) {
         state.timerDuration -= 1;
+      } else if (state.timerDuration === 0) {
+        state.timerDuration = state.maxValue;
+        state.timerRunning = false;
       } else {
         state.timerRunning = false;
-        state.restartTimer = true;
       }
     },
     startTimer(state, action) {
@@ -32,6 +34,9 @@ export const timerSlice = createSlice({
     stopTimer(state, action) {
       state.timerRunning = false;
     },
+    // resetTImerDuration(state, action) {
+    //   state.timerDuration = state.maxValue;
+    // },
   },
 });
 export const timerSliceActions = timerSlice.actions;
