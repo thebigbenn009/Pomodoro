@@ -23,13 +23,16 @@ export const timerSlice = createSlice({
         state.timerDuration -= 1;
       } else if (state.timerDuration === 0) {
         state.timerDuration = state.maxValue;
+
         state.timerRunning = false;
+        state.restartTimer = true;
       } else {
         state.timerRunning = false;
       }
     },
     startTimer(state, action) {
       state.timerRunning = true;
+      state.restartTimer = false;
     },
     stopTimer(state, action) {
       state.timerRunning = false;

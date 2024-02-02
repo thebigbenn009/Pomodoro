@@ -10,6 +10,7 @@ import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 const Timer = () => {
   const dispatch = useDispatch();
   const timerDuration = useSelector((state) => state.timerSlice.timerDuration);
+  const restartTimer = useSelector((state) => state.timerSlice.restartTimer);
   const maxValue = useSelector((state) => state.timerSlice.maxValue);
   const timerRunning = useSelector((state) => state.timerSlice.timerRunning);
   const formatTime = (time) => {
@@ -53,7 +54,11 @@ const Timer = () => {
         />
         <div className="timer-option">
           <h1>{formatTime(timerDuration)}</h1>
-          <p onClick={handleStartTimer}>start</p>
+          {restartTimer ? (
+            <p onClick={handleStartTimer}>restart</p>
+          ) : (
+            <p onClick={handleStartTimer}>start</p>
+          )}
         </div>
       </figure>
     </>

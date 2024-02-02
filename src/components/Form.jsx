@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import NumberForm from "./NumberForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsSliceActions } from "../features/settingsSlice/settingsSlice";
 import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 
 const Form = () => {
+  const restartTimer = useSelector((state) => state.timerSlice.restartTimer);
   const dispatch = useDispatch();
   const {
     register,
