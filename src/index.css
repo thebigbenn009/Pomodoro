@@ -80,9 +80,9 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.6rem;
-  padding-inline: 4.7rem;
-  padding-top: 2.1rem;
-  padding-bottom: 1.6rem;
+  /* padding-inline: 4.7rem; */
+  /* padding-top: 2.1rem; */
+  /* padding-bottom: 1.6rem; */
 }
 .btn-apply:hover {
   bottom: -4%;
