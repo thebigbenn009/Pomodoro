@@ -10,6 +10,9 @@ import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 const Timer = () => {
   const dispatch = useDispatch();
   const timerDuration = useSelector((state) => state.timerSlice.timerDuration);
+  const preferredColor = useSelector(
+    (state) => state.settingsSlice.preferredColor
+  );
   const restartTimer = useSelector((state) => state.timerSlice.restartTimer);
   const maxValue = useSelector((state) => state.timerSlice.maxValue);
   const timerRunning = useSelector((state) => state.timerSlice.timerRunning);
@@ -47,7 +50,8 @@ const Timer = () => {
             backgroundColor: "#161932",
             strokeLinecap: "round",
             textColor: "red",
-            pathColor: "#F87070",
+            // pathColor: "#F87070",
+            pathColor: `${preferredColor}`,
             trailColor: "transparent",
             pathTransitionDuration: 0.5,
           })}

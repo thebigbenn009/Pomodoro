@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isSettingsOpen: false,
-  preferredColor: "",
+  preferredColor: "#F87070",
   preferredFont: "",
 };
 export const settingsSlice = createSlice({
