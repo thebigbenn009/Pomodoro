@@ -95,7 +95,7 @@ body {
 .btn-container {
   /* border-radius: 200rem; */
   /* background-color: var(--very-dark-blue); */
-  /* display: flex; */
+  display: flex;
   justify-content: space-evenly;
   padding: 7px;
   margin-bottom: 4.5rem;
