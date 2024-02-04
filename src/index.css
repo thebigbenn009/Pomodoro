@@ -89,7 +89,7 @@ body {
   color: #333;
 }
 .active-class {
-  /* background-color: var(--red); */
+  background-color: var(--red);
   color: black;
 }
 .btn-container {
