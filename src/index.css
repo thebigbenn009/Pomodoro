@@ -94,7 +94,7 @@ body {
 }
 .btn-container {
   /* border-radius: 200rem; */
-  /* background-color: var(--very-dark-blue); */
+  background-color: var(--very-dark-blue);
   display: flex;
   justify-content: space-evenly;
   padding: 7px;
