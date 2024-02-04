@@ -93,7 +93,7 @@ body {
   color: black;
 }
 .btn-container {
-  /* border-radius: 200rem; */
+  border-radius: 200rem;
   background-color: var(--very-dark-blue);
   display: flex;
   justify-content: space-evenly;
