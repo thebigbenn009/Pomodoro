@@ -90,7 +90,7 @@ body {
 }
 .active-class {
   /* background-color: var(--red); */
-  /* color: black; */
+  color: black;
 }
 .btn-container {
   border-radius: 200rem;
