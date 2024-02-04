@@ -37,9 +37,6 @@ export const timerSlice = createSlice({
     stopTimer(state, action) {
       state.timerRunning = false;
     },
-    // resetTImerDuration(state, action) {
-    //   state.timerDuration = state.maxValue;
-    // },
   },
 });
 export const timerSliceActions = timerSlice.actions;
