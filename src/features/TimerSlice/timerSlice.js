@@ -18,7 +18,7 @@ export const timerSlice = createSlice({
       const { pomodoro, shortBreak, longBreak } = action.payload;
       if (state.currentTimer === "Pomodoro") {
         state.timerDuration = pomodoro * 60;
-        //    state.maxValue = pomodoro * 60;
+        state.maxValue = pomodoro * 60;
       } else if (state.currentTimer === "Short Break") {
         state.timerDuration = shortBreak * 60;
         state.maxValue = shortBreak * 60;
