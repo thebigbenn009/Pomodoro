@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buttonSliceActions } from "../features/buttonSlice/buttonSlice";
+import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 
 const Button = ({ name }) => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const Button = ({ name }) => {
   );
   const handleActiveClass = () => {
     dispatch(buttonSliceActions.setActiveClass(name));
+    dispatch(timerSliceActions.setCurrentTimer(name));
   };
   return (
     <button
