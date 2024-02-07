@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  CircularProgressbar,
-  CircularProgressbarWithChildren,
-  buildStyles,
-} from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useDispatch, useSelector } from "react-redux";
 import { timerSliceActions } from "../features/TimerSlice/timerSlice";
 
