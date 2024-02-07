@@ -225,7 +225,7 @@ label {
   /* width: 4rem; */
   /* border-radius: 50%; */
   /* display: grid; */
-  /* place-items: center; */
+  place-items: center;
   align-self: center;
   font-weight: 900;
   font-size: 1.5rem;
