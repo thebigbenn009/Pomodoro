@@ -18,6 +18,7 @@ export const timerSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTimer(state, action) {
+      state.timerRunning = false;
       state.currentTimer = action.payload;
       if (state.currentTimer === "Pomodoro") {
         state.timerDuration = state.pomodoroTimer * 60;
