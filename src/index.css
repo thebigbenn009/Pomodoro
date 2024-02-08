@@ -227,7 +227,7 @@ label {
   /* display: grid; */
   /* place-items: center; */
   /* align-self: center; */
-  /* font-weight: 900; */
+  font-weight: 900;
   font-size: 1.5rem;
   cursor: pointer;
 }
