@@ -224,7 +224,7 @@ label {
   height: 4rem;
   width: 4rem;
   /* border-radius: 50%; */
-  /* display: grid; */
+  display: grid;
   place-items: center;
   align-self: center;
   font-weight: 900;
