@@ -164,7 +164,7 @@ svg {
 }
 .settings-menu {
   position: relative;
-  width: 54rem;
+  max-width: 54rem;
   background-color: var(--white);
   border-radius: 2.5rem;
   padding-bottom: 4rem;
@@ -297,4 +297,59 @@ input:focus {
 }
 .settings-icon:hover {
   transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding-inline: 2.3rem;
+  }
+  .settings-menu {
+    max-width: 32.7rem;
+  }
+  form {
+    grid-template-columns: 1fr;
+  }
+  .form-control {
+    width: 100%;
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+  }
+  input {
+    width: 14.1rem;
+  }
+  label {
+    align-self: center;
+  }
+  .timer-info {
+    padding: 2.4rem;
+    padding-top: 0;
+  }
+  .settings-menu {
+    border-radius: 5px;
+    padding-bottom: 3.2rem;
+  }
+  .settings-header {
+    padding: 2.4rem 2.8rem;
+  }
+  .underline {
+    margin-bottom: 2.4rem;
+  }
+  .info-h3 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .font-info,
+  .color-info {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .color-info {
+    padding: 0;
+  }
+  .timer-container::before {
+    transform: scale(1.05);
+  }
 }

@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   timerRunning: false,
   restartTimer: false,
-  shortBreakFlag: false,
-  longBreakFlag: false,
+  pomodoroRunning: false,
+  shortBreakRunning: false,
+  longBreakRunning: false,
   currentTimer: "Pomodoro",
   pomodoroTimer: "",
   shortBreakTimer: "",
@@ -18,7 +19,7 @@ export const timerSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTimer(state, action) {
-      state.timerRunning = false;
+      //  state.timerRunning = false;
       state.currentTimer = action.payload;
       if (state.currentTimer === "Pomodoro") {
         state.timerDuration = state.pomodoroTimer * 60;
@@ -33,11 +34,19 @@ export const timerSlice = createSlice({
     },
     setTimerInputs(state, action) {
       const { pomodoro, shortBreak, longBreak } = action.payload;
-      ((state.pomodoroTimer = pomodoro),
-      (state.timerDuration = pomodoro * 60),
-      (state.maxValue = pomodoro * 60)),
-        (state.shortBreakTimer = shortBreak),
-        (state.longBreakTimer = longBreak);
+      state.pomodoroTimer = pomodoro;
+      state.shortBreakTimer = shortBreak;
+      state.longBreakTimer = longBreak;
+      if (state.currentTimer === "Pomodoro") {
+        state.timerDuration = pomodoro * 60;
+        state.maxValue = pomodoro * 60;
+      } else if (state.currentTimer === "Short Break") {
+        state.timerDuration = shortBreak * 60;
+        state.maxValue = shortBreak * 60;
+      } else if (state.currentTimer === "Long Break") {
+        state.timerDuration = longBreak * 60;
+        state.maxValue = longBreak * 60;
+      }
     },
     reduceTimerPerSecond(state, action) {
       if (state.timerDuration > 0) {
@@ -54,6 +63,15 @@ export const timerSlice = createSlice({
     startTimer(state, action) {
       state.timerRunning = true;
       state.restartTimer = false;
+      if (state.currentTimer === "Pomodoro") {
+        state.pomodoroRunning = true;
+      }
+      if (state.currentTimer === "Short Break") {
+        state.shortBreakRunning = true;
+      }
+      if (state.currentTimer === "Long Break") {
+        state.longBreakRunning === true;
+      }
     },
     stopTimer(state, action) {
       state.timerRunning = false;
