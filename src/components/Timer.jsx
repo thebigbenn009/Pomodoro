@@ -9,7 +9,6 @@ const Timer = () => {
   const preferredColor = useSelector(
     (state) => state.settingsSlice.preferredColor
   );
-  const restartTimer = useSelector((state) => state.timerSlice.restartTimer);
   const maxValue = useSelector((state) => state.timerSlice.maxValue);
   const timerRunning = useSelector((state) => state.timerSlice.timerRunning);
   const formatTime = (time) => {
@@ -33,6 +32,9 @@ const Timer = () => {
   const handleStartTimer = () => {
     dispatch(timerSliceActions.startTimer());
   };
+  const handlePauseTimer = () => {
+    dispatch(timerSliceActions.pauseTimer());
+  };
   return (
     <>
       <figure className="timer-container" style={{ width: 410, height: 410 }}>
@@ -54,11 +56,13 @@ const Timer = () => {
         />
         <div className="timer-option">
           <h1>{formatTime(timerDuration)}</h1>
-          {restartTimer ? (
+          {/* {restartTimer ? (
             <p onClick={handleStartTimer}>restart</p>
           ) : (
             <p onClick={handleStartTimer}>start</p>
-          )}
+          )} */}
+          {!timerRunning && <p onClick={handleStartTimer}>Start</p>}
+          {timerRunning && <p onClick={handlePauseTimer}>Pause</p>}
         </div>
       </figure>
     </>

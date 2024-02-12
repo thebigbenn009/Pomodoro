@@ -2,33 +2,68 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   timerRunning: false,
   restartTimer: false,
+
+  currentTimer: "Pomodoro",
+
+  pomodoroTimer: 0,
+  shortBreakTimer: 0,
+  longBreakTimer: 0,
+  timerDuration: "",
+  maxValue: "",
+  // New fields for tracking elapsed time and timer running state
+  pomodoroPaused: false,
+  shortBreakPaused: false,
+  longBreakPaused: false,
+  pomodoroElapsedTime: 0,
+  shortBreakElapsedTime: 0,
+  longBreakElapsedTime: 0,
   pomodoroRunning: false,
   shortBreakRunning: false,
   longBreakRunning: false,
-  currentTimer: "Pomodoro",
-  pomodoroTimer: "",
-  shortBreakTimer: "",
-  longBreakTimer: "",
-  timerDuration: "",
-  maxValue: "",
-  shortBreakDuration: "",
-  longBreakDuration: "",
 };
 export const timerSlice = createSlice({
   name: "timerSlice",
   initialState,
   reducers: {
-    setCurrentTimer(state, action) {
-      //  state.timerRunning = false;
-      state.currentTimer = action.payload;
+    pauseTimer(state) {
       if (state.currentTimer === "Pomodoro") {
-        state.timerDuration = state.pomodoroTimer * 60;
+        state.pomodoroPaused = true;
+        state.pomodoroElapsedTime = state.timerDuration;
+      }
+      if (state.currentTimer === "Short Break") {
+        state.shortBreakPaused = true;
+        state.shortBreakElapsedTime = state.timerDuration;
+      }
+      if (state.currentTimer === "Long Break") {
+        state.longBreakPaused = true;
+        state.longBreakElapsedTime = state.timerDuration;
+      }
+      state.timerRunning = false;
+    },
+    setCurrentTimer(state, action) {
+      const { name } = action.payload;
+      const selectedTimer = name;
+
+      //pausing the timer if it is currently running
+      if (state.timerRunning) {
+        state.timerRunning = false;
+      }
+      // set the current timer
+      state.currentTimer = selectedTimer;
+      if (state.currentTimer === "Pomodoro") {
+        state.timerDuration = state.pomodoroPaused
+          ? state.pomodoroElapsedTime
+          : state.pomodoroTimer * 60;
         state.maxValue = state.pomodoroTimer * 60;
       } else if (state.currentTimer === "Short Break") {
-        state.timerDuration = state.shortBreakTimer * 60;
-        state.maxValue = state.shortBreakTimer * 60;
+        (state.timerDuration = state.shortBreakPaused
+          ? state.shortBreakElapsedTime
+          : state.shortBreakTimer * 60),
+          (state.maxValue = state.shortBreakTimer * 60);
       } else if (state.currentTimer === "Long Break") {
-        state.timerDuration = state.longBreakTimer * 60;
+        state.timerDuration = state.longBreakPaused
+          ? state.longBreakElapsedTime
+          : state.longBreakTimer * 60;
         state.maxValue = state.longBreakTimer * 60;
       }
     },
@@ -48,7 +83,7 @@ export const timerSlice = createSlice({
         state.maxValue = longBreak * 60;
       }
     },
-    reduceTimerPerSecond(state, action) {
+    reduceTimerPerSecond(state) {
       if (state.timerDuration > 0) {
         state.timerDuration -= 1;
       } else if (state.timerDuration === 0) {
@@ -60,20 +95,33 @@ export const timerSlice = createSlice({
         state.timerRunning = false;
       }
     },
-    startTimer(state, action) {
+
+    startTimer(state) {
       state.timerRunning = true;
       state.restartTimer = false;
+
       if (state.currentTimer === "Pomodoro") {
-        state.pomodoroRunning = true;
+        state.shortBreakRunning = false;
+        state.longBreakRunning = false;
+        state.pomodoroRunning = false;
+        (state.pomodoroPaused = false), (state.pomodoroRunning = true);
       }
       if (state.currentTimer === "Short Break") {
+        state.shortBreakRunning = false;
+        state.longBreakRunning = false;
+        state.pomodoroRunning = false;
+        state.shortBreakPaused = false;
         state.shortBreakRunning = true;
       }
       if (state.currentTimer === "Long Break") {
-        state.longBreakRunning === true;
+        state.shortBreakRunning = false;
+        state.longBreakRunning = false;
+        state.pomodoroRunning = false;
+        state.longBreakPaused = false;
+        state.longBreakRunning = true;
       }
     },
-    stopTimer(state, action) {
+    stopTimer(state) {
       state.timerRunning = false;
     },
   },
