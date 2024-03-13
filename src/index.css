@@ -255,9 +255,7 @@ label {
   display: flex;
   justify-content: space-between;
 }
-.color-info {
-  /* padding-bottom: 0; */
-}
+
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
