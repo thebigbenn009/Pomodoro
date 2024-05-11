@@ -252,7 +252,7 @@ label {
 .font-info,
 .color-info {
   padding-bottom: 2.4rem;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
 }
 
