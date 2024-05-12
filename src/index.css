@@ -269,7 +269,7 @@ input {
   border: transparent;
 }
 input:focus {
-  outline: none;
+  /* outline: none; */
 }
 .arrow-up {
   z-index: 3;
