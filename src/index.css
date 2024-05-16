@@ -245,7 +245,7 @@ label {
 .fonts-container,
 .color-container {
   width: 15.2rem;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
 }
