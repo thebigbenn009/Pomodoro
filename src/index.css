@@ -253,7 +253,7 @@ label {
 .color-info {
   padding-bottom: 2.4rem;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 
 input[type="number"]::-webkit-inner-spin-button {
