@@ -257,7 +257,7 @@ label {
 }
 
 input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
 }
 .number-input {
   position: relative;
