@@ -239,7 +239,7 @@ label {
   border-right: 2px solid #333;
   transform: rotate(45deg);
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  transition-delay: 0.15s;
+  /* transition-delay: 0.15s; */
 }
 
 .fonts-container,
