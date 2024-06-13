@@ -232,12 +232,12 @@ label {
   cursor: pointer;
 }
 .check {
-  height: 0;
-  width: 0;
-  opacity: 0;
-  border-bottom: 2px solid #333;
-  border-right: 2px solid #333;
-  transform: rotate(45deg);
+  /* height: 0; */
+  /* width: 0; */
+  /* opacity: 0; */
+  /* border-bottom: 2px solid #333; */
+  /* border-right: 2px solid #333; */
+  /* transform: rotate(45deg); */
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
   transition-delay: 0.15s;
 }
